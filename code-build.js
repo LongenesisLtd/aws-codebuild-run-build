@@ -152,7 +152,7 @@ async function waitForBuildEndTime(
 
 function githubInputs() {
   const projectName = core.getInput("project-name", { required: true });
-  const { owner, repo } = github.context.repo;
+  // const { owner, repo } = github.context.repo;
   const { payload } = github.context;
   // The github.context.sha is evaluated on import.
   // This makes it hard to test.
@@ -168,6 +168,12 @@ function githubInputs() {
   assert(sourceVersion, "No source version could be evaluated.");
   const buildspecOverride =
     core.getInput("buildspec-override", { required: false }) || undefined;
+
+  const owner =
+    core.getInput("owner", { required: false }) || github.context.repo.owner;
+
+  const repo =
+    core.getInput("repo", { required: false }) || github.context.repo.repo;
 
   const envPassthrough = core
     .getInput("env-vars-for-codebuild", { required: false })
