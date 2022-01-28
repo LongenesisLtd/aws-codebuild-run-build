@@ -4,6 +4,12 @@ branding:
   icon: 'cloud'
   color: 'orange'
 inputs:
+  owner:
+    description: 'owner for target repo'
+    required: false
+  repo:
+    description: 'target repo'
+    required: false
   project-name:
     description: 'AWS CodeBuild Project Name'
     required: true
