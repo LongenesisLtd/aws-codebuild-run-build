@@ -161,7 +161,8 @@ function githubInputs() {
   // There is a complexity here because for pull request
   // the GITHUB_SHA value is NOT the correct value.
   // See: https://github.com/aws-actions/aws-codebuild-run-build/issues/36
-  const targetSha = core.getInput("target_sha", { required: false }) || "wtf";
+  const targetSha =
+    core.getInput("target_sha", { required: false }) || undefined;
 
   const sourceVersion =
     targetSha || process.env[`GITHUB_EVENT_NAME`] === "pull_request"
