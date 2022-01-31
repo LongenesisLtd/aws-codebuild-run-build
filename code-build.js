@@ -167,6 +167,8 @@ function githubInputs() {
       ? (((payload || {}).pull_request || {}).head || {}).sha
       : process.env[`GITHUB_SHA`];
 
+  console.log(sourceVersion);
+
   assert(sourceVersion, "No source version could be evaluated.");
   const buildspecOverride =
     core.getInput("buildspec-override", { required: false }) || undefined;
