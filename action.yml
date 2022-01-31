@@ -10,7 +10,7 @@ inputs:
   repo:
     description: 'target repo'
     required: false
-  sha:
+  target_sha:
     description: 'commit sha for target repo'
     required: false
   project-name:
