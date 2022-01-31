@@ -165,9 +165,11 @@ function githubInputs() {
     core.getInput("target_sha", { required: false }) || undefined;
 
   const sourceVersion =
-    targetSha || process.env[`GITHUB_EVENT_NAME`] === "pull_request"
-      ? (((payload || {}).pull_request || {}).head || {}).sha
-      : process.env[`GITHUB_SHA`];
+    targetSha === undefined
+      ? process.env[`GITHUB_EVENT_NAME`] === "pull_request"
+        ? (((payload || {}).pull_request || {}).head || {}).sha
+        : process.env[`GITHUB_SHA`]
+      : targetSha;
 
   console.log({
     targetSha,
