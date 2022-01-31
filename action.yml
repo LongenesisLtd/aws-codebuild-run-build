@@ -10,6 +10,9 @@ inputs:
   repo:
     description: 'target repo'
     required: false
+  sha:
+    description: 'commit sha for target repo'
+    required: false
   project-name:
     description: 'AWS CodeBuild Project Name'
     required: true
